@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    
+    <script src="/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+  <script>
+
+function deleteEvent(ID,object){
+        console.log(object);
+
+        $.ajax({
+
+          url:"http://localhost:8082/events/delete/"+ID,
+          method:"GET",
+          dataType:"text",
+          success:function(result){
+            $(object).parents("tr").remove();
+          },
+          error:function(error){
+            console.log(error+"");
+          }
+        })
+
+      }
+
+
+
+
+  </script>
+
+
+
+
+
+</head>
+<body>
+<%- include('../partials/navbar') %>
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">title</th>
+        <th scope="col">Event Date</th>
+        <th scope="col">Main Speaker</th>
+        <th scope="col">other Speakers</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        <% listevents.forEach(function(event) { %>
+            <tr>
+                <th scope="row"> <%= event._id %>
+                    <td><%= event.title %></td>
+                      <td><%= event.eventdate %></td>
+                      <td>
+                      <%if(event.mainSpeaker!=null){ %>
+                        <%=event.mainSpeaker.UserName%>
+                     <% } %>
+                    </td>
+                  <td>
+                    <ul class="list-group">
+                      <%if(event.otherSpeaker!=null){ %>
+                      <% event.otherSpeaker.forEach((speaker) => { %>
+                        
+                       <li class="list-group-item list-group-item-dark"><%=speaker.UserName%></li>  
+                       <% }) %>
+                       <% } %>
+                      </ul>
+                  </td>
+                </th>
+              <td>  
+                <a href="edit/<%=event._id%>" class="btn btn-primary">Edit</a>
+                  <!-- <button type="button" class="btn btn-danger">Delete</button> -->
+                  <a href="#" class="btn btn-danger" onclick="deleteEvent(<%=event._id%>,this)">Delete</a>
+
+              </td>
+             
+            </tr>
+        <% }); %>
+  
+    </tbody>
+  </table>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Events</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    
+    <script src="/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    <pre>
+
+
+    </pre>
+        <div class="main">
+            <div class="col-md-6 col-sm-12">
+               <div class="login-form">
+                  <form method ="post" action="/events/add">
+                    <!-- <div class="form-group">
+                       
+                        <input type="number" class="form-control" name ="_id" placeholder="event_id">
+                     </div> -->
+                     <div class="form-group">
+                        
+                        <input type="text" class="form-control"  name ="title" placeholder="title"  >
+                     </div>
+                     <div class="form-group">
+                       
+                        <input type="date" class="form-control" name ="date">
+                     </div>
+
+                     <div class="form-group">
+                        <select class="custom-select"name="mainspeaker" >
+                            <option selected style="background-color: slategrey;">Main Speaker</option>
+                            <% speakers.forEach(function(speaker){ %>
+                                <option value="<%=speaker._id%>"><%=speaker.UserName%> </option>
+                                
+                             <% })%>
+
+                            
+                          </select>
+                     </div>
+                     <div class="form-group">
+                        <select class="custom-select"name="otherspeakers" multiple>
+                            <option selected style="background-color: slategrey;">Other Speakers</option>
+                            
+                            <% speakers.forEach(function(speaker){ %>
+                                <option value="<%=speaker._id%>"><%=speaker.UserName%> </option>
+                                
+                             <% })%>
+
+                            
+                          </select>
+                     </div>
+                     <button type="submit" class="btn btn-dark"> ADD</button>
+                    
+                  </form>
+               </div>
+            </div>
+         </div>
+    
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EditEvent</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    
+    <script src="/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+<pre>
+
+
+</pre>
+    <div class="main">
+        <div class="col-md-6 col-sm-12">
+           <div class="login-form">
+              <form method ="post" action="/events/edit">
+                <div class="form-group">
+                   
+                    <input type="number" class="form-control" name ="id" value="<%=event._id%>" readonly >
+                    <input type="hidden" name="ID" value="<%=event._id%>"/>
+                 </div>
+                 <div class="form-group">
+                    
+                    <input type="text" class="form-control"  name ="title" value="<%=event.title%>" >
+                 </div>
+                 <div class="form-group">
+                   
+                    <input type="text" class="form-control" name ="eventdate" value="<%=event.eventdate%>">
+                 </div>
+                 
+                   
+
+                     <div class="form-group">
+                        <select class="form-control" name="mainSpeaker">
+     
+                          <%speakers.forEach((speaker)=>{ %>
+                             
+                             <option  value="<%=speaker._id%>"><%=speaker.UserName%></option>
+                          <% }) %>
+                        </select>
+                      </div>
+     
+                      <div class="form-group">
+                       <select class="form-control"  name="otherSpeaker" multiple>
+     
+                         <%speakers.forEach((speaker)=>{ %>
+                            <option  value="<%=speaker._id%>" ><%=speaker.UserName%></option>
+                         <% }) %>
+                       </select>
+                     </div>
+     
+
+
+                     
+                     
+               
+                 <button type="submit" class="btn btn-dark">update</button>
+                
+              </form>
+           </div>
+        </div>
+     </div>
+   
+</body>
+</html>

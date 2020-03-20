@@ -1,0 +1,60 @@
+ <!-- <html>
+    <head>
+
+    </head>
+    <body>
+        <form method ="post" action="/login">
+           userName   <input type="text" value=""name ="userName">
+        </br>
+    </br>
+           userPassword <input type="password" name ="userPassword">
+           <input type="submit" value="login">
+        </form>
+    </body>
+</html>  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    
+    <script src="/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+</head>
+<body>
+    
+
+<div class="sidenav">
+         <div class="login-main-text">
+            <h2>Event Handler</h2>
+            <p>Login or register To our Website</p>
+         </div>
+      </div>
+      <div class="main">
+         <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+               <form method ="post" action="/login">
+                  <div class="form-group">
+                     <label>User Name</label>
+                     <input type="text" class="form-control"  name ="userName" placeholder="User Name">
+                  </div>
+                  <div class="form-group">
+                     <label>Password</label>
+                     <input type="password" class="form-control" name ="userPassword" placeholder="Password">
+                  </div>
+                  <button type="submit" class="btn btn-black">Login</button>
+                  <a class="btn btn-secondary" href="/register" >Register</a>
+               </form>
+            </div>
+         </div>
+      </div>
+</body>
+</html>
+
+

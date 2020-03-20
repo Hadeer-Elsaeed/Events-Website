@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    
+    <script src="/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script>
+      function deleteSpeaker(ID,object){
+        console.log(object);
+
+        $.ajax({
+
+          url:"http://localhost:8082/speakers/delete/"+ID,
+          method:"POST",
+          contentType:"application/json",
+          data:JSON.stringify({_id:ID}),
+          dataType:"text",
+          success:function(result){
+            $(object).parents("tr").remove();
+          },
+          error:function(error){
+            console.log(error+"");
+          }
+        })
+
+      }
+    </script>
+</head>
+<body>
+<%- include('../partials/navbar') %>
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Address</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        <% listspeakers.forEach(function(speaker) { %>
+            <tr>
+                <th scope="row"> <%= speaker._id %><td><%= speaker.UserName %></td> - <td><%= speaker.Address.city %>,<%=speaker.Address.street%>,<%=speaker.Address.building%></td></th>
+              <td>  
+                  <a href="edit/<%=speaker._id%>" class="btn btn-primary">Edit</a>
+                  <a href="#" class="btn btn-danger" onclick="deleteSpeaker(<%=speaker._id%>,this)">Delete</a>
+              </td>
+             
+            </tr>
+        <% }); %>
+  
+    </tbody>
+  </table>
+</html>
