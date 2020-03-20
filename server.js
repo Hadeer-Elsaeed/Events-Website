@@ -45,17 +45,7 @@ server.use(express.static((path.join (__dirname,"public"))));
   
 
  
-// server.use(session({
-//   secret: 'keyboard cat',
-//   cookie: { maxAge: 60000 }
-// }));
- 
-// server.use(flash());
 
-/* -----------------------------------------------*/ 
-// server.get('/',function(request,response){
-//     response.render("auth/login");
-// });
 server.use(function(request,response,next){
     console.log("middle");
      next();
